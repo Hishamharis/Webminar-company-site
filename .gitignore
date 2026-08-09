@@ -2,6 +2,9 @@
 .env
 /node_modules/
 
-# React Router
-/.react-router/
+# Build output
+/dist/
 /build/
+
+# Legacy React Router cache
+/.react-router/
