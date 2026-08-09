@@ -1,87 +1,59 @@
-# Welcome to React Router!
+# NOVA — AI, Cloud & DevOps Studio
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A modern dark landing page built with React and Vite for the AI + Cloud + DevOps webinar.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
+## Local development
 
 ```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
+npm ci
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+Open `http://localhost:5173`.
 
-## Building for Production
-
-Create a production build:
+## Production build
 
 ```bash
 npm run build
+npm run preview
 ```
 
-## Deployment
+Vercel settings:
 
-### Docker Deployment
+- Framework preset: **Vite**
+- Install command: `npm ci`
+- Build command: `npm run build`
+- Output directory: `dist`
 
-To build and run using Docker:
+## Docker
+
+Build and run the development container:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+docker build -t nova-company-site .
+docker run --rm -p 5173:5173 nova-company-site
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Open `http://localhost:5173`.
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+## Structure
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+```text
+src/
+├── App.jsx
+├── App.css
+├── index.css
+└── main.jsx
+index.html
+vite.config.ts
+Dockerfile
 ```
 
-## Styling
+## Links
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+- GitHub: https://github.com/Hishamharis/Webminar-company-site
+- Branch: `vite-structure-migration`
+- Docker Hub target: `dimalth/company-site`
+- Docker Hub target: `hishamharis/webminar-company-site`
 
----
-
-Built with ❤️ using React Router.
+Built with React, Vite, and CSS.
