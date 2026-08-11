@@ -7,6 +7,9 @@ import Testimonials from "./components/Testimonials";
 import CaseStudies from "./components/CaseStudies";
 import Pricing from "./components/Pricing";
 import ContactForm from "./components/ContactForm";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsOfService from "./components/TermsOfService";
+import NotFound from "./components/NotFound";
 import "./enhance.css";
 
 const services = [
@@ -61,6 +64,11 @@ export default function App() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+  const isUnknownPath = typeof window !== "undefined" && window.location.pathname !== "/";
+
+  if (isUnknownPath) {
+    return <main><div className="noise" aria-hidden="true" /><NotFound /></main>;
+  }
 
   return <main>
     <div className="noise" aria-hidden="true" />
@@ -85,6 +93,8 @@ export default function App() {
     <Pricing />
     <Reveal as="section" className="faq section-pad" id="faq"><div className="section-heading"><p className="section-kicker">/ Questions</p><span>Straight answers <b>→</b></span></div><div className="faq-list">{faqs.map((f) => <div className="faq-item" key={f.q}><h3 className="faq-q">{f.q}</h3><p className="faq-a">{f.a}</p></div>)}</div></Reveal>
     <section className="contact section-pad" id="contact"><p className="section-kicker">/ Have a good one?</p><h2>Let&apos;s make<br /><em>something great.</em></h2><div className="contact-inner"><a className="contact-email" href="mailto:hello@nova.studio">hello@nova.studio <span>↗</span></a><ContactForm /><div className="status-row"><StatusBadge /></div></div></section>
+    <TermsOfService />
+    <PrivacyPolicy />
     <footer><a href="#top" className="brand">NOVA<span>®</span></a><p>© 2026 NOVA. All rights reserved.</p><div><a href="#top">Instagram ↗</a><a href="#top">LinkedIn ↗</a></div></footer>
   </main>;
 }
