@@ -1,4 +1,13 @@
 import { useEffect, useState } from "react";
+import CountUp from "./components/CountUp";
+import Reveal from "./components/Reveal";
+import MagneticButton from "./components/MagneticButton";
+import StatusBadge from "./components/StatusBadge";
+import Testimonials from "./components/Testimonials";
+import CaseStudies from "./components/CaseStudies";
+import Pricing from "./components/Pricing";
+import ContactForm from "./components/ContactForm";
+import "./enhance.css";
 
 const services = [
   { number: "01", title: "Website Management", description: "Design, build, and ongoing care for high-performance websites that stay fast and current.", icon: "◍" },
@@ -12,10 +21,10 @@ const services = [
 ];
 
 const stats = [
-  { num: "99.9%", label: "Target uptime" },
-  { num: "24/7", label: "Monitoring & response" },
-  { num: "40+", label: "Projects shipped" },
-  { num: "5 min", label: "Response SLA" },
+  { value: 99.9, suffix: "%", decimals: 1, label: "Target uptime", animated: true },
+  { display: "24/7", label: "Monitoring & response", animated: false },
+  { value: 40, suffix: "+", decimals: 0, label: "Projects shipped", animated: true },
+  { display: "5 min", label: "Response SLA", animated: false },
 ];
 
 const processSteps = [
@@ -59,20 +68,23 @@ export default function App() {
       <a href="#top" className="brand" aria-label="NOVA home" onClick={closeMenu}>NOVA<span>®</span></a>
       <button className="menu-toggle" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? "Close" : "Menu"}</button>
       <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
-        <a href="#services" onClick={closeMenu}>Services <span>↗</span></a><a href="#stats" onClick={closeMenu}>Stats <span>↗</span></a><a href="#process" onClick={closeMenu}>Process <span>↗</span></a><a href="#faq" onClick={closeMenu}>FAQ <span>↗</span></a><a href="#about" onClick={closeMenu}>About <span>↗</span></a>
+        <a href="#services" onClick={closeMenu}>Services <span>↗</span></a><a href="#stats" onClick={closeMenu}>Stats <span>↗</span></a><a href="#process" onClick={closeMenu}>Process <span>↗</span></a><a href="#testimonials" onClick={closeMenu}>Clients <span>↗</span></a><a href="#pricing" onClick={closeMenu}>Plans <span>↗</span></a><a href="#faq" onClick={closeMenu}>FAQ <span>↗</span></a><a href="#about" onClick={closeMenu}>About <span>↗</span></a>
       </div>
       <a href="#contact" className="nav-cta" onClick={closeMenu}>Start a project <span>↗</span></a>
     </nav>
 
-    <section className="hero" id="top"><div className="hero-copy"><p className="eyebrow"><i /> Independent technology studio · Est. 2024</p><h1>Build<br /><em>what&apos;s next.</em></h1><p className="hero-description">We design, build, host, secure, and operate the digital systems ambitious teams rely on.</p><div className="hero-actions"><a href="#contact" className="button button-light">Let&apos;s talk <span>↗</span></a><a href="#work" className="text-link">Explore our work <span>↓</span></a></div></div><Orbit /><div className="hero-index">01 <span>/</span> 08</div></section>
+    <section className="hero" id="top"><div className="hero-copy"><p className="eyebrow"><i /> Independent technology studio · Est. 2024</p><h1>Build<br /><em>what&apos;s next.</em></h1><p className="hero-description">We design, build, host, secure, and operate the digital systems ambitious teams rely on.</p><div className="hero-actions"><MagneticButton href="#contact" className="button button-light">Let&apos;s talk <span>↗</span></MagneticButton><a href="#work" className="text-link">Explore our work <span>↓</span></a></div></div><Orbit /><div className="hero-index">01 <span>/</span> 08</div></section>
     <section className="marquee" aria-label="Capabilities"><div>WEB MANAGEMENT <span>✦</span> SERVER OPS <span>✦</span> CYBERSECURITY <span>✦</span> CLOUD <span>✦</span> DEVOPS <span>✦</span> AI SYSTEMS <span>✦</span> WEB MANAGEMENT <span>✦</span> SERVER OPS <span>✦</span> CYBERSECURITY <span>✦</span> CLOUD <span>✦</span> DEVOPS <span>✦</span> AI SYSTEMS <span>✦</span></div></section>
     <section className="intro section-pad" id="about"><p className="section-kicker">/ The way we work</p><div className="intro-grid"><h2>Good technology<br /><em>feels inevitable.</em></h2><div><p className="large-copy">We believe the best digital systems sit at the intersection of clarity, craft, and reliability.</p><p className="muted-copy">No bloated process. No unnecessary noise. Just thoughtful strategy, sharp engineering, and operations that make complex things feel simple.</p></div></div></section>
-    <section className="services section-pad" id="services"><div className="section-heading"><p className="section-kicker">/ What we do</p><span>Scroll to explore <b>→</b></span></div><div className="service-grid">{services.map((service) => <article className="service-card" key={service.number}><div className="service-top"><span>{service.number}</span><strong>{service.icon}</strong></div><h3>{service.title}</h3><p>{service.description}</p><a href="#contact" aria-label={`Learn more about ${service.title}`}>Learn more <span>↗</span></a></article>)}</div></section>
-    <section className="stats section-pad" id="stats"><div className="section-heading"><p className="section-kicker">/ By the numbers</p><span>Why teams stay <b>→</b></span></div><div className="stat-grid">{stats.map((s) => <div className="stat" key={s.label}><span className="stat-num">{s.num}</span><span className="stat-label">{s.label}</span></div>)}</div></section>
-    <section className="process section-pad" id="process"><div className="section-heading"><p className="section-kicker">/ How we work</p><span>From idea to operation <b>→</b></span></div><div className="process-grid">{processSteps.map((step) => <div className="process-step" key={step.num}><span className="step-num">{step.num}</span><h3 className="step-title">{step.title}</h3><p className="step-desc">{step.desc}</p></div>)}</div></section>
-    <section className="work-section section-pad" id="work"><div className="work-card"><div><p className="section-kicker">/ Selected thought</p><h2>Make it<br /><em>meaningful.</em></h2></div><div className="work-side"><p>We build digital products people remember — because they solve real problems beautifully, and stay online when it matters most.</p><a className="button button-light" href="#contact">See how we think <span>↗</span></a></div></div></section>
-    <section className="faq section-pad" id="faq"><div className="section-heading"><p className="section-kicker">/ Questions</p><span>Straight answers <b>→</b></span></div><div className="faq-list">{faqs.map((f) => <div className="faq-item" key={f.q}><h3 className="faq-q">{f.q}</h3><p className="faq-a">{f.a}</p></div>)}</div></section>
-    <section className="contact section-pad" id="contact"><p className="section-kicker">/ Have a good one?</p><h2>Let&apos;s make<br /><em>something great.</em></h2><a className="contact-email" href="mailto:hello@nova.studio">hello@nova.studio <span>↗</span></a></section>
+    <Reveal as="section" className="services section-pad" id="services"><div className="section-heading"><p className="section-kicker">/ What we do</p><span>Scroll to explore <b>→</b></span></div><div className="service-grid">{services.map((service) => <article className="service-card" key={service.number}><div className="service-top"><span>{service.number}</span><strong>{service.icon}</strong></div><h3>{service.title}</h3><p>{service.description}</p><a href="#contact" aria-label={`Learn more about ${service.title}`}>Learn more <span>↗</span></a></article>)}</div></Reveal>
+    <Reveal as="section" className="stats section-pad" id="stats"><div className="section-heading"><p className="section-kicker">/ By the numbers</p><span>Why teams stay <b>→</b></span></div><div className="stat-grid">{stats.map((s) => <div className="stat" key={s.label}>{s.animated ? <CountUp value={s.value} suffix={s.suffix} decimals={s.decimals} /> : <span className="stat-num">{s.display}</span>}<span className="stat-label">{s.label}</span></div>)}</div></Reveal>
+    <Reveal as="section" className="process section-pad" id="process"><div className="section-heading"><p className="section-kicker">/ How we work</p><span>From idea to operation <b>→</b></span></div><div className="process-grid">{processSteps.map((step) => <div className="process-step" key={step.num}><span className="step-num">{step.num}</span><h3 className="step-title">{step.title}</h3><p className="step-desc">{step.desc}</p></div>)}</div></Reveal>
+    <Reveal as="section" className="work-section section-pad" id="work"><div className="work-card"><div><p className="section-kicker">/ Selected thought</p><h2>Make it<br /><em>meaningful.</em></h2></div><div className="work-side"><p>We build digital products people remember — because they solve real problems beautifully, and stay online when it matters most.</p><MagneticButton href="#contact" className="button button-light">See how we think <span>↗</span></MagneticButton></div></div></Reveal>
+    <Testimonials />
+    <CaseStudies />
+    <Pricing />
+    <Reveal as="section" className="faq section-pad" id="faq"><div className="section-heading"><p className="section-kicker">/ Questions</p><span>Straight answers <b>→</b></span></div><div className="faq-list">{faqs.map((f) => <div className="faq-item" key={f.q}><h3 className="faq-q">{f.q}</h3><p className="faq-a">{f.a}</p></div>)}</div></Reveal>
+    <section className="contact section-pad" id="contact"><p className="section-kicker">/ Have a good one?</p><h2>Let&apos;s make<br /><em>something great.</em></h2><div className="contact-inner"><a className="contact-email" href="mailto:hello@nova.studio">hello@nova.studio <span>↗</span></a><ContactForm /><div className="status-row"><StatusBadge /></div></div></section>
     <footer><a href="#top" className="brand">NOVA<span>®</span></a><p>© 2026 NOVA. All rights reserved.</p><div><a href="#top">Instagram ↗</a><a href="#top">LinkedIn ↗</a></div></footer>
   </main>;
 }

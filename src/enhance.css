@@ -1,0 +1,365 @@
+/* ============================================================
+   enhance.css — dark minimal enhancement layer
+   Imported AFTER App.css, so design tokens already exist:
+   --accent #d8ff4f | --paper #f1f1ee | --muted #9a9a96
+   --line  #292929  | --bg    #090909
+   ============================================================ */
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Magnetic element ---------- */
+.magnetic {
+  display: inline-block;
+  transition: transform .2s ease;
+}
+
+/* ---------- Status badge ---------- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: var(--bg);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, .7);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, .7); }
+  70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+/* ---------- Testimonials ---------- */
+.testimonials {
+  width: 100%;
+  padding: 96px 0;
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.testi-card {
+  background: #141414;
+  border: 1px solid #242424;
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.testi-quote {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--paper);
+  margin: 0;
+}
+
+.testi-author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+}
+
+.testi-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.testi-role {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------- Cases ---------- */
+.cases {
+  width: 100%;
+  padding: 96px 0;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.case-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.case-metric {
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -.02em;
+}
+
+.case-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+
+.case-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--paper);
+  margin: 4px 0 0;
+}
+
+.case-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---------- Pricing ---------- */
+.pricing {
+  width: 100%;
+  padding: 96px 0;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+  align-items: start;
+}
+
+.price-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.price-card.featured {
+  border-color: var(--accent);
+  background: rgba(216, 255, 79, .04);
+}
+
+.price-name {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+
+.price-amount {
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--paper);
+  letter-spacing: -.02em;
+}
+
+.price-period {
+  font-size: 14px;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+.price-features {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--paper);
+}
+
+.price-features li {
+  padding-left: 20px;
+  position: relative;
+}
+
+.price-features li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.price-cta {
+  margin-top: auto;
+  display: inline-block;
+  text-align: center;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--bg);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .2s ease;
+}
+
+.price-card.featured .price-cta {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.price-cta:hover {
+  opacity: .85;
+}
+
+/* ---------- Contact form ---------- */
+.contact-form {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.form-field input,
+.form-field textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 2px;
+  color: var(--paper);
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .2s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--muted);
+  opacity: .6;
+}
+
+.form-error {
+  font-size: 12px;
+  color: #ff6b6b;
+}
+
+.form-success {
+  font-size: 14px;
+  color: var(--accent);
+  text-align: center;
+  padding: 12px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+}
+
+.form-submit {
+  align-self: flex-start;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity .2s ease;
+}
+
+.form-submit:hover {
+  opacity: .85;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .testi-grid,
+  .case-grid,
+  .price-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .magnetic,
+  .price-cta,
+  .form-submit {
+    transition: none;
+  }
+
+  .status-dot {
+    animation: none;
+  }
+}
